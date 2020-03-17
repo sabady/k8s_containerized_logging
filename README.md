@@ -29,42 +29,13 @@ root@k8s-mysql:/# echo $MYSQL_ROOT_PASSWORD
 test
 
 root@k8s-mysql:/# mysql --user=root --password=$MYSQL_ROOT_PASSWORD
+
 . . .
 
-mysql> show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-4 rows in set (0.01 sec)
-
 mysql> create database challenge;
-Query OK, 1 row affected (0.00 sec)
 
 mysql> use challenge;
-Database changed
-mysql> create table logs (
-    -> logName varchar(255),
-    -> lastModify varchar(255)
-    -> );
-Query OK, 0 rows affected (0.02 sec)
 
-mysql> show tables;
-+---------------------+
-| Tables_in_challenge |
-+---------------------+
-| logs                |
-+---------------------+
-1 row in set (0.00 sec)
+mysql> create table logs (logName VARCHAR(100) NOT NULL, lastModify VARCHAR(30) NOT NULL);
 
-mysql> select * from logs;
-+-------------------------------+-------------------------------+
-| logName                       | lastModify                    |
-+-------------------------------+-------------------------------+
-| /mnt/logs/dummies-2rmmr.log.1 | 2020-03-11 07:58:32.188940769 |
-+-------------------------------+-------------------------------+
-1 row in set (0.00 sec)
+
