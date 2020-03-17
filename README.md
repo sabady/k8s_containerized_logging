@@ -32,9 +32,9 @@ root@k8s-mysql:/# mysql --user=root --password=$MYSQL_ROOT_PASSWORD
 
 . . .
 
-mysql> create database challenge;
+mysql> create database logs_db;
 
-mysql> use challenge;
+mysql> use logs_db;
 
 mysql> create table logs (logName VARCHAR(100) NOT NULL, lastModify VARCHAR(30) NOT NULL);
 

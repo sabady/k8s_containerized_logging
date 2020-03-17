@@ -13,7 +13,7 @@ spec:
         app: mysql-client
     spec:
       containers:
-      - image: 192.168.70.3:5000/mysql-challenge:1.0.9
+      - image: <image>
         name:  dummy
         env:
         - name: DB_PASSWD
@@ -23,7 +23,7 @@ spec:
         - name: DB_HOST
           value: db
         - name: DB_NAME
-          value: challenge
+          value: logs_db
         - name: TABLE
           value: logs
         ports:
