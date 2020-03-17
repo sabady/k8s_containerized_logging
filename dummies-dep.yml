@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: dummies
+spec:
+  replicas: 2
+  selector:
+    app: mysql-client
+  template:
+    metadata:
+      name: mysql-client
+      labels:
+        app: mysql-client
+    spec:
+      containers:
+      - image: 192.168.70.3:5000/mysql-challenge:1.0.9
+        name:  dummy
+        env:
+        - name: DB_PASSWD
+          value: test
+        - name: USER
+          value: root
+        - name: DB_HOST
+          value: db
+        - name: DB_NAME
+          value: challenge
+        - name: TABLE
+          value: logs
+        ports:
+        - containerPort: 3306
+        name: dummy-port
+        volumeMounts:
+        - name: logs-storage
+          mountPath: /mnt/logs
+      volumes:
+      - name: logs-storage
+        persistentVolumeClaim:
+          claimName: pvc-logs
+
